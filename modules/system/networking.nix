@@ -1,5 +1,5 @@
 # modules/system/networking.nix
-{ ... }:
+{ config, pkgs, ... }:
 
 {
   networking = {
@@ -14,9 +14,12 @@
   };
 
   systemd.services.update-ddns = {
-      serviceConfig.EnvironmentFile = "/etc/nixos/ddns/.env";
-      serviceConfig.Type = "oneshot";
-      script = pkgs.writeShellScriptFromFile "ddns-updater" /etc/nixos/ddns/updater.sh;
+      serviceConfig = {
+          EnvironmentFile = "/etc/nixos/ddns/.env";
+          ExecStart = "/etc/nixos/modules/ddns/updater.sh";
+          WorkingDirectory = "/etc/nixos/modules/ddns";
+          Type = "oneshot";
+      };
   };
 
   systemd.timers.update-ddns = {
@@ -24,7 +27,7 @@
       timerConfig = {
           onCalendar = "*-*-* 08:00:00";
           Persistent = true;
-          Unit = update-ddns.service;
+          Unit = "update-ddns.service";
       };
   };
 
