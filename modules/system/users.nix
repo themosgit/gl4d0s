@@ -17,6 +17,7 @@
         "docker"
         "libvirtd"
         "kvm"
+        "wireshark"
       ];
     };
     users.qwerty = {

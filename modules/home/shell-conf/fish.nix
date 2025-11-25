@@ -119,7 +119,6 @@ in
     ":q" = "exit";
     cat = "bat";
     du = "dust";
-    g = "${gitAndTools.git}/bin/git";
     la = "eza -la";
     ll = "eza -l";
     ls = "eza";

@@ -69,8 +69,9 @@
       "$mod, Q, killactive,"
       "$mod, SPACE, exec, wofi --show drun --lines 3 --width 300"
       "$mod, ENTER, exec, ghostty"
-      "$mod, S, exec, shotman --copy --capture region"
       "$mod, B, exec, firefox"
+      ", PRINT, exec, hyprshot -m output"
+      "$mod, PRINT, exec, hyprshot -m region"
       "$mod, V, togglefloating,"
       "$mod, F, fullscreen,"
 

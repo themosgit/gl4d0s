@@ -18,13 +18,12 @@
     ghostty
     thunderbird
     vesktop
-    wireshark
     keepassxc
     shotman
     brightnessctl
     python314
-    prismlauncher
-    zulu24
+    zathura
+    hyprshot
   ];
 
   programs.bat.enable = true;

@@ -5,11 +5,6 @@
   nixpkgs.config.allowUnfree = true;
   #packages installed on the system for every user
   environment.systemPackages = with pkgs; [
-      (writeShellScriptBin "qemu-system-x86_64-uefi" ''
-        qemu-system-x86_64 \
-        - bios ${OVMF.fd}/FV/OVMF.fd \
-        "$@"
-    '')
     llvmPackages.libcxxClang
     virt-manager
     gnumake
@@ -24,13 +19,16 @@
     wl-clipboard
     nettools
     traceroute
+    file
     # syncthing
     firefox
     ghostty
     luajitPackages.luarocks
+    wireshark
     #for games
     mangohud
-    protonup
+    protonup-ng
+    protontricks
 
 
     #for alisases to work we
@@ -44,6 +42,7 @@
   programs.nix-ld.enable = true;
   security.polkit.enable = true;
 
+  programs.wireshark.enable = true;
     #enable optimizations
   virtualisation.libvirtd = {
       enable = true;
@@ -53,13 +52,6 @@
           package = pkgs.qemu_kvm;
           runAsRoot = true;
           swtpm.enable = true;
-          ovmf = {
-              enable = true;
-              packages = [(pkgs.OVMF.override {
-                  secureBoot = true;
-                  tpmSupport = true;
-               }).fd];
-          };
        };
     };
 
@@ -110,6 +102,7 @@
 
   fonts = {
     packages = with pkgs; [
+      corefonts
       nerd-fonts.jetbrains-mono
       nerd-fonts.symbols-only
     ];
