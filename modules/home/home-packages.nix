@@ -24,6 +24,7 @@
     python314
     zathura
     hyprshot
+    claude-code
   ];
 
   programs.bat.enable = true;

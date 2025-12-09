@@ -29,6 +29,7 @@
     mangohud
     protonup-ng
     protontricks
+    python313
 
 
     #for alisases to work we
@@ -61,35 +62,54 @@
       enable = true;
       setSocketVariable = true;
   };
-  /**
-   *  services.syncthing = {
-   *    enable = true;
-   *    openDefaultPorts = true;
-   *    user = "themos";
-   *    configDir = "/home/themos/.config/syncthing";
-   *    guiAddress = "0.0.0.0:8384";
-   *    settings = {
-   *        overrideDevices = true;
-   *        overrideFolders = true;
-   *        devices = {
-   *        };
-   *    };
-   *  };
-   *
-   *  systemd.services.pascual-notifier = {
-   *    wantedBy = [ "multi-user.target" ];
-   *    serviceConfig = {
-   *      ExecStart = "${pkgs.nodejs}/bin/node /home/qwerty/fetcher/index.js";
-   *      WorkingDirectory = "/home/qwerty/fetcher";
-   *      Restart = "always";
-   *      User = "qwerty";
-   *      StandardOutput = "append:/home/qwerty/fetcher/fetcher.log";
-   *      StandardError = "append:/home/qwerty/fetcher/fetcher.log";
-   *    };
-   *  };
-   *
-   **/
 
+    systemd.services.aoc-solver = {
+      description = "Advent of Code Auto Solver";
+      serviceConfig = {
+        Type = "oneshot"; 
+        User = "qwerty";
+        WorkingDirectory = "/home/qwerty/aoc_solver"; 
+        ExecStart = "${pkgs.python313.withPackages (ps: with ps; [ 
+          requests 
+          beautifulsoup4 
+          google-generativeai 
+          python-dotenv 
+        ])}/bin/python -u /home/qwerty/aoc_solver/bot.py";
+        
+        StandardOutput = "append:/home/qwerty/aoc_solver/solver.log";
+        StandardError = "append:/home/qwerty/aoc_solver/solver.log";
+      };
+    };
+
+
+    systemd.timers.aoc-solver = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "aoc-solver.service" ];
+      timerConfig = {
+       
+        OnCalendar = "*-*-* 07:00:00"; 
+        
+
+        Persistent = true; 
+        
+        Unit = "aoc-solver.service";
+      };
+    };
+
+ systemd.services.htb-discord-bot = {
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
+      description = "HackTheBox Discord Bot";
+      serviceConfig = {
+        ExecStart = "${pkgs.python313.withPackages (ps: with ps; [ discordpy python-dotenv requests tzdata ])}/bin/python -u /home/qwerty/htb_bot/bot.py";
+        WorkingDirectory = "/home/qwerty/htb_bot";
+        Restart = "always";
+        RestartSec = "10s";
+        User = "qwerty";
+        StandardOutput = "append:/home/qwerty/htb_bot/update.log";
+        StandardError = "append:/home/qwerty/htb_bot/update.log";
+      };
+    };
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
         if (action.id == "org.libvirt.unix.manage" &&

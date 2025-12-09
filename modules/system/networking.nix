@@ -13,23 +13,32 @@
     };
   };
 
-  systemd.services.update-ddns = {
-      serviceConfig = {
-          EnvironmentFile = "/etc/nixos/ddns/.env";
-          ExecStart = "/etc/nixos/modules/ddns/updater.sh";
-          WorkingDirectory = "/etc/nixos/modules/ddns";
-          Type = "oneshot";
-      };
-  };
+    systemd.services.update-ddns = {
+        description = "Cloudflare DDNS Updater";
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
 
-  systemd.timers.update-ddns = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-          onCalendar = "*-*-* 08:00:00";
-          Persistent = true;
-          Unit = "update-ddns.service";
-      };
-  };
+        path = with pkgs; [ bash curl util-linux ];
+
+        serviceConfig = {
+            Type = "oneshot";
+            WorkingDirectory = "/etc/nixos/modules/ddns";
+            ExecStart = "${pkgs.bash}/bin/bash /etc/nixos/modules/ddns/updater.sh";
+            User = "root";
+        };
+    };
+
+    systemd.timers.update-ddns = {
+        description = "Run DDNS Updater every 5 minutes";
+        wantedBy = [ "timers.target" ];
+
+        timerConfig = {
+            OnBootSec = "30sec";
+            OnUnitActiveSec = "5min";
+            Persistent = true;
+            Unit = "update-ddns.service";
+        };
+    };
 
   services.resolved.enable = true;
 
