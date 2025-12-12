@@ -60,7 +60,6 @@
             new_optimizations = true;
             ignore_opacity = true;
         };
-        blurls = [ "wofi" ];
     };
 
     "$mod" = "SUPER";

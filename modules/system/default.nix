@@ -11,7 +11,7 @@
     ./remap.nix
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 

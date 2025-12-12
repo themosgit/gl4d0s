@@ -4,14 +4,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "themos";
-    userEmail = "themos360@gmail.com";
-
-    extraConfig = {
-      init.defaultBranch = "main";
-      core.editor = "nvim";
-      pull.rebase = true;
-      credential.helper = "!gh auth git-credential";
-    };
+    user.name = "themos";
+    user.email = "themos360@gmail.com";
+    init.defaultBranch = "main";
+    core.editor = "nvim";
+    pull.rebase = true;
+    credential.helper = "!gh auth git-credential";
   };
 }

@@ -24,6 +24,7 @@
     python314
     zathura
     hyprshot
+    tmux
     claude-code
   ];
 
