@@ -50,11 +50,6 @@ in
   xdg.configFile."stack/config.yaml".text = lib.generators.toYAML { } {
     templates = {
       scm-init = "git";
-      params = {
-        author-name = config.programs.git.user.name;
-        author-email = config.programs.git.user.email;
-        github-username = "themosgit";
-      };
     };
     nix.enable = true;
     recommend-stack-upgrade = false;

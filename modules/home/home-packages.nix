@@ -26,6 +26,7 @@
     hyprshot
     tmux
     claude-code
+    opencode
   ];
 
   programs.bat.enable = true;
