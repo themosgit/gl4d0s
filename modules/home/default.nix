@@ -20,6 +20,10 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    addKeysToAgent = "yes";
+    extraConfig = ''
+    	IdentityFIle ~/.ssh/id_ed25519
+    '';
   };
 
   programs.home-manager.enable = true;

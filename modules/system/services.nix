@@ -1,0 +1,37 @@
+{ pkgs, config, ... }:
+
+{
+
+
+  services.github-runners = {
+  	aperture-labs = {
+		enable = true;
+		url = "https://github.com/themosgit/sigmod25";
+		tokenFile = "./.keys/sigmod25-runner-token";
+		replace = true;
+		extraPackages = with pkgs; [ llvmPackages.libcxxClang cmake ];
+	};
+  };
+ systemd.services.htb-discord-bot = {
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
+      description = "HackTheBox Discord Bot";
+      serviceConfig = {
+        ExecStart = "${pkgs.python313.withPackages (ps: with ps; [ discordpy python-dotenv requests tzdata ])}/bin/python -u /home/qwerty/htb_bot/bot.py";
+        WorkingDirectory = "/home/qwerty/htb_bot";
+        Restart = "always";
+        RestartSec = "10s";
+        User = "qwerty";
+        StandardOutput = "append:/home/qwerty/htb_bot/update.log";
+        StandardError = "append:/home/qwerty/htb_bot/update.log";
+      };
+    };
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if (action.id == "org.libvirt.unix.manage" &&
+            subject.isInGroup("libvirtd")) {
+                return polkit.Result.YES;
+            }
+        });
+    '';
+}

@@ -4,6 +4,7 @@
 {
   imports = [
     ./networking.nix
+    ./services.nix
     ./users.nix
     ./hyprland.nix
     ./audio.nix
