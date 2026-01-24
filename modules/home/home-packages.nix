@@ -27,6 +27,8 @@
     tmux
     claude-code
     opencode
+    socat
+    netcat-gnu
   ];
 
   programs.bat.enable = true;
