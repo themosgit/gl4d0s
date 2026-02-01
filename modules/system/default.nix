@@ -12,11 +12,17 @@
     ./remap.nix
   ];
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+  	enable = true;
+	extraPackages = with pkgs; [
+      	rocmPackages.clr.icd
+    ];
+  };
 
   services.xserver.videoDrivers = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
   #enable flakes
   nix.settings.experimental-features = "nix-command flakes";

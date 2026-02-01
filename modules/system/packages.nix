@@ -30,6 +30,8 @@
     protonup-ng
     protontricks
     python313
+    rocmPackages.rocminfo
+    radeontop
 
 
     #for alisases to work we
