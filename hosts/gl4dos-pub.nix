@@ -1,0 +1,7 @@
+{
+
+    gl4dos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPAeJPNhg9SAcmCOnti18KSqBnU8HEDQD5oufWSn+8c+";
+
+    themos-gl4dos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAgPuiVNrqtTRY14ixtLn05hBTFtc4CHPwz+NdKwf0Wn";
+
+}

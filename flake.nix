@@ -17,9 +17,14 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, hyprland, agenix, ... }@inputs: {
 
     nixosConfigurations = {
       gl4d0s = nixpkgs.lib.nixosSystem {
@@ -30,6 +35,11 @@
 
 	  ./modules/hardware-configuration.nix
 	  ./modules/system
+      ./modules/ollama-gateway.nix
+
+      agenix.nixosModules.default {
+        age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      }
 
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;

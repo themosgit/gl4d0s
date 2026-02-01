@@ -31,7 +31,9 @@
     protontricks
     python313
     rocmPackages.rocminfo
+    rocmPackages.rocm-smi
     radeontop
+    openssl
 
 
     #for alisases to work we

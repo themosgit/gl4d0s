@@ -8,7 +8,7 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [ 22 80 443 ];
       allowedUDPPorts = [];
     };
   };
@@ -56,15 +56,22 @@
 
   services.fail2ban = {
       enable = true;
-      maxretry = 4;
-      bantime = "24h";
+      maxretry = 5;
+      bantime = "1h";
       bantime-increment = {
           enable = true;
           formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
-      maxtime = "4320"; # Do not ban for more than 1 week
-      overalljails = true; # Calculate the bantime based on all the violation
+          maxtime = "4320";
+          overalljails = true;
       };
       jails = {
+          nginx-api-abuse.settings = {
+              enabled = true;
+              filter = "nginx-http-auth";
+              logpath = "/var/log/nginx/api_access.log";
+              backend = "auto";
+              port = "http,https";
+          };
           apache-nohome-iptables.settings = {
               filter = "apache-nohome";
               action = ''iptables-multiport[name=HTTP, port="http,https]"'';

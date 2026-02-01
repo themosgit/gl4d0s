@@ -1,17 +1,6 @@
 { pkgs, config, ... }:
 
 {
-
-
-  services.github-runners = {
-  	aperture-labs = {
-		enable = true;
-		url = "https://github.com/themosgit/sigmod25";
-		tokenFile = "/etc/nixos/modules/system/.keys/sigmod25-runner-token";
-		replace = true;
-		extraPackages = with pkgs; [ ccache ];
-	};
-  };
  systemd.services.htb-discord-bot = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
