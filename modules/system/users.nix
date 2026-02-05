@@ -23,7 +23,13 @@
     users.qwerty = {
         isNormalUser = true;
         description = "User";
-        };
+        packages = with pkgs; [
+            git
+            docker
+            docker-compose
+            php83
+        ];
+    };
   };
 
   security.sudo.enable = true;

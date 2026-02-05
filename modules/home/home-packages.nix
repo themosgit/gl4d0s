@@ -26,7 +26,6 @@
     hyprshot
     tmux
     claude-code
-    opencode
     socat
     netcat-gnu
   ];

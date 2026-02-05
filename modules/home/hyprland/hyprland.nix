@@ -42,14 +42,12 @@
       preserve_split = true;
     };
 
-    windowrulev2 = [
-      "float, class:^(wofi)$"
-      "center, class:^(wofi)$"
-      "noborder, class:^(wofi)$"
-      "noanim, class:^(wofi)$"
-      "float, class:^(thunar)$"
-      "size 800 600,class:^(thunar)$"
-      "center,class:^(thunar)$"
+    windowrule = [
+      "float on, match:class ^(wofi)$"
+      "match:class ^(wofi)$, center on"
+      "match:class ^(thunar)$, float on"
+      "match:class ^(thunar)$, size 800 600"
+      "match:class ^(thunar)$, center on"
     ];
 
     decoration = {

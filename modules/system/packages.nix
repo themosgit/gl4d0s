@@ -43,6 +43,7 @@
     dust #better du
     fd #better find
     ripgrep #better grep
+    opencode
   ];
   programs.nix-ld.enable = true;
   security.polkit.enable = true;

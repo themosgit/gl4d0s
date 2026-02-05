@@ -83,14 +83,10 @@ in {
   };
   users.groups.litellm = {};
 
-# Run LiteLLM as a Docker Container
 virtualisation.oci-containers.containers.litellm = {
   image = "ghcr.io/berriai/litellm:main-latest";
-
-  # "Host" networking lets Docker see your local Redis (127.0.0.1)
   extraOptions = [ "--network=host" ]; 
 
-  # Pass the secrets file directly to Docker
   environmentFiles = [ config.age.secrets.litellm-env.path ];
 
   environment = {
@@ -98,17 +94,13 @@ virtualisation.oci-containers.containers.litellm = {
   };
 
   volumes = [
-    # Mount the config file
     "/etc/litellm/config.yaml:/app/config.yaml"
-    # Persist the database file (Docker path : Host path)
     "/var/lib/litellm-docker:/app/data"
   ];
 
-  # The command to start the server
   cmd = [ "--config" "/app/config.yaml" "--port" "${toString litellmPort}" "--host" "127.0.0.1" ];
 };
 
-# Create the folder for the database so Docker doesn't crash
 systemd.tmpfiles.rules = [
   "d /var/lib/litellm-docker 0755 root root -"
 ];
@@ -174,7 +166,7 @@ systemd.tmpfiles.rules = [
         proxyWebsockets = true;
         
         extraConfig = ''
-          limit_req zone=api_limit burst=30 nodelay;
+          limit_req zone=api_limit burst=30000 nodelay;
           limit_conn addr_limit 10;
           
           proxy_hide_header X-Powered-By;
