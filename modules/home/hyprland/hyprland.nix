@@ -43,8 +43,8 @@
     };
 
     windowrule = [
-      "float on, match:class ^(wofi)$"
-      "match:class ^(wofi)$, center on"
+      "float on, match:class ^(vicinae)$"
+      "match:class ^(vicinae)$, center on"
       "match:class ^(thunar)$, float on"
       "match:class ^(thunar)$, size 800 600"
       "match:class ^(thunar)$, center on"
@@ -64,7 +64,7 @@
     bind = [
 
       "$mod, Q, killactive,"
-      "$mod, SPACE, exec, wofi --show drun --lines 3 --width 300"
+      "$mod, SPACE, exec, vicinae open"
       "$mod, ENTER, exec, ghostty"
       "$mod, B, exec, firefox"
       ", PRINT, exec, hyprshot -m output"

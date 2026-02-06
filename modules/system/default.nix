@@ -10,6 +10,7 @@
     ./audio.nix
     ./packages.nix
     ./remap.nix
+    ./zram.nix
   ];
 
   hardware.graphics = {

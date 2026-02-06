@@ -7,7 +7,6 @@
     ./hyprland.nix
     ./hyprpaper.nix
     ./waybar.nix
-    ./wofi.nix
     ./cursor.nix
     ./hypridle.nix
     ./hyprlock.nix

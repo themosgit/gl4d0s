@@ -14,7 +14,7 @@
 	  "/home/themos/Wallpapers/nix-wallpaper-nineish-dark-gray.jpg"
 	];
 	wallpaper = [
-	  ",/home/themos/Wallpapers/nix-wallpaper-nineish-dark-gray.jpg"
+	  "/home/themos/Wallpapers/nix-wallpaper-nineish-dark-gray.jpg"
 	];
       };
     };

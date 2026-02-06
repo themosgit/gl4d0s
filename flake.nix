@@ -22,9 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, agenix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, hyprland, agenix, vicinae, ... }@inputs: {
 
     nixosConfigurations = {
       gl4d0s = nixpkgs.lib.nixosSystem {
