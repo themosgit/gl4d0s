@@ -37,7 +37,6 @@
 
 	  ./modules/hardware-configuration.nix
 	  ./modules/system
-      ./modules/ollama-gateway.nix
 
       agenix.nixosModules.default {
         age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];

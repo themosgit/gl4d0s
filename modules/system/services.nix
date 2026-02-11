@@ -1,6 +1,11 @@
 { pkgs, config, ... }:
 
 {
+
+ systemd.services.nix-daemon.serviceConfig = {
+   MemoryHigh = "30G";
+   MemoryMax = "32G";
+ };
  systemd.services.htb-discord-bot = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
