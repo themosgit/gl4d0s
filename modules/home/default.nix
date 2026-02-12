@@ -9,7 +9,6 @@
     ./shell-conf
     ./home-packages.nix
     ./git.nix
-    ./vicinae.nix
   ];
 
   home = {

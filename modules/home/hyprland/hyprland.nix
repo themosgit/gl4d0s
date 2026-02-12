@@ -43,8 +43,8 @@
     };
 
     windowrule = [
-      "float on, match:class ^(vicinae)$"
-      "match:class ^(vicinae)$, center on"
+      "float on, match:class ^(wofi)$"
+      "match:class ^(wofi)$, center on"
       "match:class ^(thunar)$, float on"
       "match:class ^(thunar)$, size 800 600"
       "match:class ^(thunar)$, center on"
@@ -64,7 +64,7 @@
     bind = [
 
       "$mod, Q, killactive,"
-      "$mod, SPACE, exec, vicinae open"
+      "$mod, SPACE, exec, wofi --show drun --lines 3 --width 300"
       "$mod, ENTER, exec, ghostty"
       "$mod, B, exec, firefox"
       ", PRINT, exec, hyprshot -m output"
@@ -92,7 +92,7 @@
       "$mod, 7, workspace, 7"
       "$mod, 8, workspace, 8"
       "$mod, 9, workspace, 9"
-      "$mod, 10, workspace, 10"
+      "$mod, 0, workspace, 0"
 
       "$mod SHIFT, 1, movetoworkspace, 1"
       "$mod SHIFT, 2, movetoworkspace, 2"
@@ -103,7 +103,7 @@
       "$mod SHIFT, 7, movetoworkspace, 7"
       "$mod SHIFT, 8, movetoworkspace, 8"
       "$mod SHIFT, 9, movetoworkspace, 9"
-      "$mod SHIFT, 10, movetoworkspace, 10"
+      "$mod SHIFT, 0, movetoworkspace, 0"
     ];
   };
   };

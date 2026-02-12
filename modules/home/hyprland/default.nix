@@ -10,5 +10,6 @@
     ./cursor.nix
     ./hypridle.nix
     ./hyprlock.nix
+    ./wofi.nix
   ];
 }
