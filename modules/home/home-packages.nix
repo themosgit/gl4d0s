@@ -28,6 +28,7 @@
     claude-code
     socat
     netcat-gnu
+    presenterm
   ];
 
   programs.bat.enable = true;

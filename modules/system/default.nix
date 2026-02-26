@@ -10,7 +10,8 @@
     ./audio.nix
     ./packages.nix
     ./remap.nix
-    ./zram.nix
+    ./fuzzflakes-rules.nix
+    ./attic.nix
   ];
 
   hardware.graphics = {
@@ -26,9 +27,9 @@
   system.stateVersion = "25.11";
 
   #enable flakes
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.experimental-features = "nix-command flakes cgroups";
 
-  #bootloader
+  nix.settings.trusted-users = [ "root" "themos" ];
   boot.loader.systemd-boot.enable = true;
 
   # Use latest kernel.

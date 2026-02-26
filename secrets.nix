@@ -6,4 +6,5 @@ in
  "secrets/litellm-env.age".publicKeys = all_keys;
  "secrets/cloudflare-token.age".publicKeys = all_keys;
  "secrets/redis-pass.age".publicKeys = all_keys;
+ "secrets/attic-credentials.age".publicKeys = all_keys;
 }

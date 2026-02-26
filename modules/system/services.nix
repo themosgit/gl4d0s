@@ -1,23 +1,18 @@
 { pkgs, config, ... }:
 
 {
-
- systemd.services.nix-daemon.serviceConfig = {
-   MemoryHigh = "30G";
-   MemoryMax = "32G";
- };
  systemd.services.htb-discord-bot = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
       description = "HackTheBox Discord Bot";
       serviceConfig = {
-        ExecStart = "${pkgs.python313.withPackages (ps: with ps; [ discordpy python-dotenv requests tzdata ])}/bin/python -u /home/qwerty/htb_bot/bot.py";
-        WorkingDirectory = "/home/qwerty/htb_bot";
+        ExecStart = "${pkgs.python313.withPackages (ps: with ps; [ discordpy python-dotenv requests tzdata ])}/bin/python -u /home/qwerty/HTB-Progress-Tracker/bot.py";
+        WorkingDirectory = "/home/qwerty/HTB-Progress-Tracker";
         Restart = "always";
         RestartSec = "10s";
         User = "qwerty";
-        StandardOutput = "append:/home/qwerty/htb_bot/update.log";
-        StandardError = "append:/home/qwerty/htb_bot/update.log";
+        StandardOutput = "append:/home/qwerty/HTB-Progress-Tracker/update.log";
+        StandardError = "append:/home/qwerty/HTB-Progress-Tracker/update.log";
       };
     };
   security.polkit.extraConfig = ''

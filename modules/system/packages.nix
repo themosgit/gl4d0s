@@ -35,6 +35,10 @@
     radeontop
     openssl
 
+    aflplusplus
+    cachix
+
+
 
     #for alisases to work we
     #put the dependencies in
