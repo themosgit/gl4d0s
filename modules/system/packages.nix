@@ -37,8 +37,7 @@
 
     aflplusplus
     cachix
-
-
+    cloudflared
 
     #for alisases to work we
     #put the dependencies in

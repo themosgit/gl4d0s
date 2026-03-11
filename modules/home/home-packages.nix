@@ -10,7 +10,7 @@
     wireplumber
     nixfmt-rfc-style
     gh
-    neofetch
+    fastfetch 
     btop
     nmap
     neovim

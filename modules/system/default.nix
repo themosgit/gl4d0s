@@ -10,8 +10,8 @@
     ./audio.nix
     ./packages.nix
     ./remap.nix
-    ./fuzzflakes-rules.nix
     ./attic.nix
+    ./hydra.nix
   ];
 
   hardware.graphics = {
@@ -27,7 +27,7 @@
   system.stateVersion = "25.11";
 
   #enable flakes
-  nix.settings.experimental-features = "nix-command flakes cgroups";
+  nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix";
 
   nix.settings.trusted-users = [ "root" "themos" ];
   boot.loader.systemd-boot.enable = true;
