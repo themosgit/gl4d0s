@@ -32,6 +32,9 @@ in
     hydraURL = "https://hydra.gl4dos.com";
     notificationSender = "hydra@gl4dos.com";
     useSubstitutes = true;
+    extraConfig = ''
+        evaluator_max_memory_size = 0
+    '';
   };
   services.postgresql.enable = true;
   nix.settings = {
