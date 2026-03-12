@@ -34,7 +34,7 @@ in
     useSubstitutes = true;
     extraConfig = ''
         evaluator_max_memory_size = 0
-        evaluator_workers = 4
+        evaluator_workers = 16 
     '';
   };
   services.postgresql.enable = true;
