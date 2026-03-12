@@ -25,7 +25,11 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   system.stateVersion = "25.11";
-
+    systemd.services.nix-daemon = {
+    serviceConfig = {
+        Delegate = true; 
+    };
+    };
   #enable flakes
   nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix";
 
