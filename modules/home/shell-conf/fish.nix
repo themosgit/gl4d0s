@@ -125,7 +125,7 @@ in
     lt = "eza -lt";
     find = "fd";
     vi = "nvim";
-    rebuilt = "sudo nixos-rebuild switch --flake /etc/nixos";
+    rebuild = "sudo nixos-rebuild switch --flake /etc/nixos";
     tb = "toggle-background";
   };
 
