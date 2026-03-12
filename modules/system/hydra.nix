@@ -23,10 +23,6 @@ in
     group = "hydra";
     mode = "0400";
   };
-  nix.settings = {
-      max-jobs = 16;
-      min-free = 50 * 1024 * 1024 * 1024;
-  };
   services.hydra = {
     enable = true;
     hydraURL = "https://hydra.gl4dos.com";
@@ -39,6 +35,8 @@ in
   };
   services.postgresql.enable = true;
   nix.settings = {
+    max-jobs = 16;
+    min-free = 50 * 1024 * 1024 * 1024;
     post-build-hook = "${postBuildHook}";
     extra-substituters = [ "http://localhost:8080/fuzzflakes" ];
     extra-trusted-public-keys = [
