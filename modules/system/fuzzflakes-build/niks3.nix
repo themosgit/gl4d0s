@@ -4,8 +4,8 @@ let
   hydraSecret = file: {
     sopsFile = ../../../secrets/${file};
     format = "binary";
-    owner = "hydra";
-    group = "hydra";
+    owner = "niks3";
+    group = "niks3";
     mode = "0400";
   };
 in
