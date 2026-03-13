@@ -34,7 +34,8 @@ in
       extraConfig = ''
           evaluator_workers = 3
       '';
-      cloudflared = {
+    };
+     cloudflared = {
         enable = true;
         tunnels.hydra = {
           credentialsFile = config.age.secrets.cloudflared-hydra.path;
@@ -44,7 +45,6 @@ in
           };
         };
       };
-    };
     postgresql.enable = true;
   };
 
