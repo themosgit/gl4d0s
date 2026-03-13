@@ -12,6 +12,7 @@
     ./remap.nix
     ./attic.nix
     ./hydra.nix
+    ./swap.nix
   ];
 
   hardware.graphics = {
