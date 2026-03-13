@@ -43,8 +43,10 @@ in
         "hydra.gl4dos.com" = "http://localhost:3000";
       };
     };
+    };
     postgresql.enable = true;
   };
+
   nix.settings = {
     max-jobs = 16;
     min-free = 50 * 1024 * 1024 * 1024;
@@ -70,4 +72,4 @@ in
     group = "cloudflared";
   };
   users.groups.cloudflared = {};
-}
+};
