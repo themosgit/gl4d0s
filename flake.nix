@@ -21,6 +21,14 @@
 
   outputs = { self, nixpkgs, home-manager, hyprland, agenix, ... }@inputs: {
 
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+
+    devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+      packages = [
+        nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style
+      ];
+    };
+
     nixosConfigurations = {
       gl4d0s = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

@@ -31,7 +31,7 @@
     };
     };
   #enable flakes
-  nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix";
+  nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix ca-derivations";
 
   nix.settings.trusted-users = [ "root" "themos" ];
   boot.loader.systemd-boot.enable = true;
