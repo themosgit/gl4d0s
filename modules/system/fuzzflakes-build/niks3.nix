@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 
-{ config, pkgs, ... }:
-
 let
   hydraSecret = file: {
     sopsFile = ../../../secrets/${file};
