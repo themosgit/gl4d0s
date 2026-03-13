@@ -5,12 +5,12 @@
 {
   #user environment packages
   home.packages = with pkgs; [
-    hyperfine #benchmark tool
-    mosh #ssh wrapper
+    hyperfine # benchmark tool
+    mosh # ssh wrapper
     wireplumber
     nixfmt-rfc-style
     gh
-    fastfetch 
+    fastfetch
     btop
     nmap
     neovim

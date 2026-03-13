@@ -4,16 +4,16 @@
 {
   users = {
     defaultUserShell = pkgs.fish;
-    groups.cloudflared = {};
+    groups.cloudflared = { };
     users.themos = {
       isNormalUser = true;
       description = "User";
       extraGroups = [
         "wheel"
-	    "networkmanager"
-	    "audio"
-	    "video"
-	    "storage"
+        "networkmanager"
+        "audio"
+        "video"
+        "storage"
         "docker"
         "libvirtd"
         "kvm"
@@ -21,14 +21,14 @@
       ];
     };
     users.qwerty = {
-        isNormalUser = true;
-        description = "User";
-        packages = with pkgs; [
-            git
-            docker
-            docker-compose
-            php83
-        ];
+      isNormalUser = true;
+      description = "User";
+      packages = with pkgs; [
+        git
+        docker
+        docker-compose
+        php83
+      ];
     };
   };
 

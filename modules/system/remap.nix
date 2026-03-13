@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.interception-tools = {
     enable = true;
     plugins = [ pkgs.interception-tools-plugins.caps2esc ];

@@ -3,13 +3,13 @@
 { inputs, pkgs, ... }:
 
 {
-programs.hyprlock = {
+  programs.hyprlock = {
     enable = true;
-    
+
     settings = {
       general = {
         disable_loading_bar = true;
-        grace = 0;                    # Seconds before requiring password
+        grace = 0; # Seconds before requiring password
         hide_cursor = true;
         no_fade_in = false;
       };
@@ -17,7 +17,7 @@ programs.hyprlock = {
       # Background
       background = [
         {
-          path = "/home/themos/Wallpapers/nix-wallpaper-nineish-dark-gray.jpg";        # Use screenshot as background, or specify path to image
+          path = "/home/themos/Wallpapers/nix-wallpaper-nineish-dark-gray.jpg"; # Use screenshot as background, or specify path to image
         }
       ];
 
@@ -52,7 +52,7 @@ programs.hyprlock = {
           shadow_passes = 5;
           shadow_size = 10;
         }
-    ];
+      ];
 
     };
   };

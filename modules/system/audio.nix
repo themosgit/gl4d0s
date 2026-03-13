@@ -1,12 +1,12 @@
- { ... }:
+{ ... }:
 #audio conf
-{ 
+{
   services.pipewire = {
     enable = true;
     pulse.enable = true;
     audio.enable = true;
     jack.enable = true;
-    alsa  = {
+    alsa = {
       enable = true;
     };
   };

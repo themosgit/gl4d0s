@@ -1,0 +1,11 @@
+keys:
+  - &gl4dos age1sgma3yltuq7kjauykqrkqen0rxs7xhkhzj3n2ag756lca05h8agq436gs0
+
+  - &themos_gl4dos age14xh7j4cppt8nz2uxaz4vc6vuhkyq4kmvejprenkhy2tyfsgy8yqqtap67j
+
+creation_rules:
+  - path_regex: secrets/.*
+    key_groups:
+      - age:
+          - *gl4dos
+          - *themos_gl4dos

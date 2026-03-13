@@ -10,15 +10,14 @@
     ./audio.nix
     ./packages.nix
     ./remap.nix
-    ./attic.nix
-    ./hydra.nix
+    ./fuzzflakes-build
     ./swap.nix
   ];
 
   hardware.graphics = {
-  	enable = true;
-	extraPackages = with pkgs; [
-      	rocmPackages.clr.icd
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
     ];
   };
 
@@ -26,15 +25,18 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   system.stateVersion = "25.11";
-    systemd.services.nix-daemon = {
+  systemd.services.nix-daemon = {
     serviceConfig = {
-        Delegate = true; 
+      Delegate = true;
     };
-    };
+  };
   #enable flakes
   nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix ca-derivations";
 
-  nix.settings.trusted-users = [ "root" "themos" ];
+  nix.settings.trusted-users = [
+    "root"
+    "themos"
+  ];
   boot.loader.systemd-boot.enable = true;
 
   # Use latest kernel.

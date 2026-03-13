@@ -13,7 +13,7 @@
 
   programs.waybar = {
     enable = false;
-    
+
     settings = {
       mainBar = {
         layer = "top";
@@ -45,11 +45,11 @@
           icon-size = 10;
           sort-by-number = true;
           persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
           };
         };
 

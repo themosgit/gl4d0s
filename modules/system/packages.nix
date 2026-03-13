@@ -42,33 +42,32 @@
     #for alisases to work we
     #put the dependencies in
     #the system packages
-    eza #better ls
-    dust #better du
-    fd #better find
-    ripgrep #better grep
+    eza # better ls
+    dust # better du
+    fd # better find
+    ripgrep # better grep
     opencode
   ];
   programs.nix-ld.enable = true;
   security.polkit.enable = true;
 
   programs.wireshark.enable = true;
-    #enable optimizations
+  #enable optimizations
   virtualisation.libvirtd = {
-      enable = true;
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-      qemu = {
-          package = pkgs.qemu_kvm;
-          runAsRoot = true;
-          swtpm.enable = true;
-       };
+    enable = true;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
     };
-
+  };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
-      enable = true;
-      setSocketVariable = true;
+    enable = true;
+    setSocketVariable = true;
   };
 
   fonts = {
@@ -83,6 +82,7 @@
   programs = {
     git.enable = true;
     zoxide.enable = true;
+    bat.enable = true;
   };
 
   programs.steam.enable = true;
