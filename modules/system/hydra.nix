@@ -29,8 +29,7 @@ in
     notificationSender = "hydra@gl4dos.com";
     useSubstitutes = true;
     extraConfig = ''
-        evaluator_max_memory_size = 0
-        evaluator_workers = 16 
+        evaluator_workers = 3
     '';
   };
   services.postgresql.enable = true;
