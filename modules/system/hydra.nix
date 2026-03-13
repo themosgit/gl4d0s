@@ -27,22 +27,23 @@ in
   };
   services = { 
     hydra = {
-    enable = true;
-    hydraURL = "https://hydra.gl4dos.com";
-    notificationSender = "hydra@gl4dos.com";
-    useSubstitutes = true;
-    extraConfig = ''
-        evaluator_workers = 3
-    '';
-    cloudflared = {
-    enable = true;
-    tunnels.hydra = {
-      credentialsFile = config.age.secrets.cloudflared-hydra.path;
-      default = "http_status:404";
-      ingress = {
-        "hydra.gl4dos.com" = "http://localhost:3000";
+      enable = true;
+      hydraURL = "https://hydra.gl4dos.com";
+      notificationSender = "hydra@gl4dos.com";
+      useSubstitutes = true;
+      extraConfig = ''
+          evaluator_workers = 3
+      '';
+      cloudflared = {
+        enable = true;
+        tunnels.hydra = {
+          credentialsFile = config.age.secrets.cloudflared-hydra.path;
+          default = "http_status:404";
+          ingress = {
+            "hydra.gl4dos.com" = "http://localhost:3000";
+          };
+        };
       };
-    };
     };
     postgresql.enable = true;
   };
@@ -72,4 +73,5 @@ in
     group = "cloudflared";
   };
   users.groups.cloudflared = {};
-};
+}
+
