@@ -31,7 +31,8 @@
     };
   };
   #enable flakes
-  nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix ca-derivations";
+  nix.settings.experimental-features = "nix-command flakes cgroups recursive-nix";
+  nix.settings.use-cgroups = true;
 
   nix.settings.trusted-users = [
     "root"
