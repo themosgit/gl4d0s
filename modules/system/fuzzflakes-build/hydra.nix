@@ -10,7 +10,7 @@
   };
 
   services.hydra = {
-    enable = true;
+    enable = false;
     hydraURL = "https://hydra.gl4dos.com";
     notificationSender = "hydra@gl4dos.com";
     useSubstitutes = true;

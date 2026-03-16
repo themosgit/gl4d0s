@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hydra.nix
+#    ./hydra.nix
     ./niks3.nix
   ];
 
@@ -24,13 +24,13 @@
   # };
   #
   #this is a hole accept-new should be changed to PAT
-  programs.ssh.extraConfig = ''
-    Host github.com
-      User git
-      IdentityFile ${config.sops.secrets.hydra-github-ssh.path}
-      StrictHostKeyChecking accept-new
-  '';
-
+  # programs.ssh.extraConfig = ''
+  #   Host github.com
+  #     User git
+  #     IdentityFile ${config.sops.secrets.hydra-github-ssh.path}
+  #     StrictHostKeyChecking accept-new
+  # '';
+  #
   services.postgresql = {
     enable = true;
     enableTCPIP = false;
