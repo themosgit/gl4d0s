@@ -1,5 +1,5 @@
 # modules/system/default.nix
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   imports = [

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   postBuildHook = pkgs.writeShellScript "niks3-post-build-hook" ''
@@ -19,12 +19,19 @@ in
   };
 
   services.hydra = {
-    enable = true;
+    enable = false;
     hydraURL = "https://hydra.gl4dos.com";
     notificationSender = "hydra@gl4dos.com";
     useSubstitutes = true;
+    minimumDiskFree = 100;
+    minimumDiskFreeEvaluator = 60;
     extraConfig = ''
       evaluator_workers = 3
+      max_concurrent_evals = 2
+      max_db_connections = 128
+      evaluator_max_memory_size = 4096
+      max_output_size = 4294967296
+      upload_logs_to_binary_cache = true
     '';
   };
 
@@ -35,4 +42,13 @@ in
       "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="
     ];
   };
+
+  nix.buildMachines = [
+    {
+      hostName = "localhost";
+      systems = [ "x86_64-linux" ];
+      maxJobs = 32;
+      supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
+    }
+  ]; 
 }
