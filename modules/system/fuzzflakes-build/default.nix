@@ -17,12 +17,12 @@
     connect-timeout = 10;
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "hourly";
-    options = "--delete-older-than 7d";
-  };
-
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "hourly";
+  #   options = "--delete-older-than 7d";
+  # };
+  #
   #this is a hole accept-new should be changed to PAT
   programs.ssh.extraConfig = ''
     Host github.com
