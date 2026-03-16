@@ -1,20 +1,28 @@
 { config, pkgs, ... }:
 
 let
-  hydraSecret = file: {
+  niks3-secrets = file: {
     sopsFile = ../../../secrets/${file};
     format = "binary";
     owner = "niks3";
     group = "niks3";
     mode = "0400";
   };
+  postBuildHook = pkgs.writeShellScript "niks3-post-build-hook" ''
+    set -euf
+    export NIKS3_SERVER_URL="http://127.0.0.1:5751"
+    export NIKS3_AUTH_TOKEN_FILE="${config.sops.secrets.niks3-api-token.path}"
+
+    echo "$OUT_PATHS" | xargs ${pkgs.niks3}/bin/niks3 push
+  '';
+
 in
 {
   sops.secrets = {
-    r2-access-key = hydraSecret "r2-access-key";
-    r2-secret-key = hydraSecret "r2-secret-key";
-    niks3-signing-key = hydraSecret "niks3-signing-key";
-    niks3-api-token = hydraSecret "niks3-api-token";
+    r2-access-key = niks3-secrets "r2-access-key";
+    r2-secret-key = niks3-secrets "r2-secret-key";
+    niks3-signing-key = niks3-secrets "niks3-signing-key";
+    niks3-api-token = niks3-secrets "niks3-api-token";
   };
 
   services.niks3 = {
@@ -39,5 +47,14 @@ in
       failedUploadsOlderThan = "6h";
       schedule = "daily";
     };
+  };
+
+
+  nix.settings = {
+    post-build-hook = "${postBuildHook}";
+    extra-substituters = [ "http://127.0.0.1:5751" ];
+    extra-trusted-public-keys = [
+      "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="
+    ];
   };
 }
