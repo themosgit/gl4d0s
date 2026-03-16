@@ -11,7 +11,7 @@
     ./packages.nix
     ./remap.nix
     ./fuzzflakes-build
-    ./swap.nix
+ #   ./swap.nix
   ];
 
   hardware.graphics = {
