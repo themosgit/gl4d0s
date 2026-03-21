@@ -45,6 +45,7 @@
     eza # better ls
     dust # better du
     fd # better find
+    git-lfs
     ripgrep # better grep
     opencode
   ];

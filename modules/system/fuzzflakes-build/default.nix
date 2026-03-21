@@ -7,7 +7,7 @@
   ];
 
   nix.settings = {
-    max-jobs = 16;
+    max-jobs = 32;
     builders-use-substitutes = true;
     narinfo-cache-positive-ttl = 3600;
     narinfo-cache-negative-ttl = 1800;

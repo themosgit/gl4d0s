@@ -48,8 +48,6 @@ in
       schedule = "daily";
     };
   };
-
-
   nix.settings = {
     extra-substituters = [ "http://127.0.0.1:5751" ];
     extra-trusted-public-keys = [
