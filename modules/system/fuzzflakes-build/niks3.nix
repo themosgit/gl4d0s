@@ -48,7 +48,9 @@ in
       schedule = "daily";
     };
   };
+
   nix.settings = {
+    post-build-hook = "${postBuildHook}";
     extra-substituters = [ "http://127.0.0.1:5751" ];
     extra-trusted-public-keys = [
       "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="
