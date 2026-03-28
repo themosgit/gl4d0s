@@ -43,15 +43,15 @@ in
 
     gc = {
       enable = true;
-      olderThan = "720h";
-      failedUploadsOlderThan = "6h";
-      schedule = "daily";
+      olderThan = "4320h";
+      failedUploadsOlderThan = "168h";
+      schedule = "weekly";
     };
   };
 
   nix.settings = {
     post-build-hook = "${postBuildHook}";
-    extra-substituters = [ "http://127.0.0.1:5751" ];
+    extra-substituters = [ "https://cache.gl4dos.com" ];
     extra-trusted-public-keys = [
       "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="
     ];
