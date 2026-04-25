@@ -48,7 +48,7 @@
     };
   };
 
-  sops.secrets.cloudflared-hydra = {
+  sops.secrets.cloudflared-niks3 = {
     sopsFile = ../../../secrets/cloudflared-hydra;
     format = "binary";
     owner = "cloudflared";
@@ -63,11 +63,11 @@
 
   services.cloudflared = {
     enable = true;
-    tunnels.hydra = {
-      credentialsFile = config.sops.secrets.cloudflared-hydra.path;
+    tunnels.niks3 = {
+      credentialsFile = config.sops.secrets.cloudflared-niks3.path;
       default = "http_status:404";
       ingress = {
-        "hydra.gl4dos.com" = "http://localhost:3000";
+        "niks3.gl4dos.com" = "http://localhost:5751";
       };
     };
   };
