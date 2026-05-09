@@ -24,7 +24,7 @@
     firefox
     ghostty
     luajitPackages.luarocks
-    wireshark
+    spotify
     #for games
     mangohud
     protonup-ng
@@ -52,7 +52,6 @@
   programs.nix-ld.enable = true;
   security.polkit.enable = true;
 
-  programs.wireshark.enable = true;
   #enable optimizations
   virtualisation.libvirtd = {
     enable = true;

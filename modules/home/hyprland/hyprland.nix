@@ -38,7 +38,6 @@
       };
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
 
@@ -66,6 +65,7 @@
         "$mod, Q, killactive,"
         "$mod, SPACE, exec, wofi --show drun --lines 3 --width 300"
         "$mod, ENTER, exec, ghostty"
+        "$mod, S, exec, steam -no-cef-sandbox"
         "$mod, B, exec, firefox"
         ", PRINT, exec, hyprshot -m output"
         "$mod, PRINT, exec, hyprshot -m region"
