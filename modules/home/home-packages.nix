@@ -29,6 +29,7 @@
     socat
     netcat-gnu
     presenterm
+    mistral
   ];
 
   programs.bat.enable = true;
