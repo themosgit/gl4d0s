@@ -51,6 +51,7 @@
           modules = [
 
             ./modules/hardware-configuration.nix
+            ./modules/mistral.nix
             ./modules/system
 
             sops-nix.nixosModules.sops

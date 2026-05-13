@@ -25,11 +25,10 @@
     zathura
     hyprshot
     tmux
-    claude-code
     socat
     netcat-gnu
     presenterm
-    mistral
+    mistral-vibe
   ];
 
   programs.bat.enable = true;
