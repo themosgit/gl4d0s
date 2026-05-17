@@ -71,6 +71,7 @@
         "$mod, PRINT, exec, hyprshot -m region"
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
+        "$mod, C, exec, sh -c 'hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 75% 75% && hyprctl dispatch centerwindow'"
 
         "$mod, L, movefocus, r"
         "$mod, H, movefocus, l"
