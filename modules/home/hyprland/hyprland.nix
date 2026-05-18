@@ -104,6 +104,8 @@
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 0"
+        "$mod, F11, exec, hyprctl keyword monitor \"desc:LG Electronics LG TV SSCR2, 2560x1440@120, 0x0, 1\""
+        "$mod, F12, exec, hyprctl keyword monitor \"desc:LG Electronics LG TV SSCR2, 3840x2160@60, 0x0, 1\""
       ];
     };
   };
