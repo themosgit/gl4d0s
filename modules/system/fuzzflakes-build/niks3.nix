@@ -50,7 +50,7 @@ in
   };
 
   nix.settings = {
-    post-build-hook = "${postBuildHook}";
+    #post-build-hook = "${postBuildHook}";
     extra-substituters = [ "https://cache.gl4dos.com" ];
     extra-trusted-public-keys = [
       "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="

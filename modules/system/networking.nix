@@ -56,7 +56,8 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
+      PubkeyAuthentication = true;
       AllowUsers = null;
       UseDns = true;
       X11Forwarding = false;
