@@ -48,6 +48,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
 
+
           modules = [
 
             ./modules/hardware-configuration.nix
@@ -57,8 +58,8 @@
             sops-nix.nixosModules.sops
             { sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ]; }
 
-            niks3.nixosModules.default
-
+            niks3.nixosModules.niks3
+            niks3.nixosModules.niks3-auto-upload
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

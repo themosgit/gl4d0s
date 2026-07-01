@@ -8,14 +8,6 @@ let
     group = "niks3";
     mode = "0400";
   };
-  postBuildHook = pkgs.writeShellScript "niks3-post-build-hook" ''
-    set -euf
-    export NIKS3_SERVER_URL="http://127.0.0.1:5751"
-    export NIKS3_AUTH_TOKEN_FILE="${config.sops.secrets.niks3-api-token.path}"
-
-    echo "$OUT_PATHS" | xargs ${pkgs.niks3}/bin/niks3 push
-  '';
-
 in
 {
   sops.secrets = {
@@ -49,8 +41,13 @@ in
     };
   };
 
+  services.niks3-auto-upload = {
+      enable = true;
+      serverUrl = "http://127.0.0.1:5751";
+      authTokenFile = "${config.sops.secrets.niks3-api-token.path}";
+  };
+
   nix.settings = {
-    #post-build-hook = "${postBuildHook}";
     extra-substituters = [ "https://cache.gl4dos.com" ];
     extra-trusted-public-keys = [
       "fuzzflakes-cache:+wlHdD6xWnHIk64d0DJbG2BeovPgrdfdOkeXH/gBpgg="
