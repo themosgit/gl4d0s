@@ -29,6 +29,7 @@
     netcat-gnu
     presenterm
     mistral-vibe
+    claude-code
   ];
 
   programs.bat.enable = true;
