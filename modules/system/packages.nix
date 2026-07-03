@@ -34,6 +34,7 @@
     rocmPackages.rocm-smi
     radeontop
     openssl
+    sqlite
 
     aflplusplus
     cachix
