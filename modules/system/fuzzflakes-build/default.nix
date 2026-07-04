@@ -4,6 +4,7 @@
   imports = [
 #    ./hydra.nix
     ./niks3.nix
+    ./monitoring.nix
   ];
 
   nix.settings = {
@@ -43,7 +44,7 @@
         random_page_cost = 1.1;
         effective_io_concurrency = 200;
         wal_buffers = "16MB";
-        checkpoint_completion_target = 0.9; 
+        checkpoint_completion_target = 0.9;
         max_wal_size = "1GB";
     };
   };
@@ -68,6 +69,7 @@
       default = "http_status:404";
       ingress = {
         "niks3.gl4dos.com" = "http://localhost:5751";
+        "grafana.gl4dos.com" = "http://localhost:3000";
       };
     };
   };
