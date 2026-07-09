@@ -70,6 +70,7 @@
       ingress = {
         "niks3.gl4dos.com" = "http://localhost:5751";
         "grafana.gl4dos.com" = "http://localhost:3000";
+        "ssh.gl4dos.com" = "ssh://localhost:22";
       };
     };
   };
