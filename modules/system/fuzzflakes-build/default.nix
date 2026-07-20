@@ -62,6 +62,11 @@
   };
   users.groups.cloudflared = { };
 
+  systemd.services.cloudflared-tunnel-niks3 = {
+    startLimitIntervalSec = 0;
+    serviceConfig.RestartSec = "5s";
+  };
+
   services.cloudflared = {
     enable = true;
     tunnels.niks3 = {
