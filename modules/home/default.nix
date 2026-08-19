@@ -3,7 +3,6 @@
 { inputs, pkgs, ... }:
 
 {
-
   imports = [
     ./hyprland
     ./shell-conf

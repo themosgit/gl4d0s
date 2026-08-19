@@ -28,7 +28,6 @@
     socat
     netcat-gnu
     presenterm
-    mistral-vibe
     claude-code
   ];
 
