@@ -29,6 +29,7 @@
     netcat-gnu
     presenterm
     claude-code
+    pi-coding-agent
   ];
 
   programs.bat.enable = true;

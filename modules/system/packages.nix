@@ -35,6 +35,7 @@
     radeontop
     openssl
     sqlite
+    tailscale
 
     aflplusplus
     cachix
