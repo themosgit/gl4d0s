@@ -8,16 +8,25 @@
     owner = "root";
   };
 
+  services.tailscale.enable = true;
+  networking.nftables.enable = true;
   networking = {
     hostName = "gl4d0s";
     networkmanager.enable = true;
 
     firewall = {
       enable = true;
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
       allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
     };
   };
+
+  systemd.services.tailscaled.serviceConfig.Environment = [ 
+    "TS_DEBUG_FIREWALL_MODE=nftables" 
+  ];
+  systemd.network.wait-online.enable = false; 
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   systemd.services.update-ddns = {
     description = "Cloudflare DDNS Updater";
