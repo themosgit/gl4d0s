@@ -1,6 +1,14 @@
 { config, ... }:
 
 {
+  sops.secrets.prometheus-web-config = {
+    sopsFile = ../../../secrets/prometheus-web-config;
+    format = "binary";
+    owner = "prometheus";
+    group = "prometheus";
+    mode = "0400";
+  };
+
   sops.secrets.grafana-admin-password = {
     sopsFile = ../../../secrets/grafana-admin-password;
     format = "binary";
@@ -43,6 +51,8 @@
       port = 9100;
       enabledCollectors = [ "systemd" ];
     };
+
+    webConfigFile = config.sops.secrets.prometheus-web-config.path;
   };
 
   services.grafana = {
