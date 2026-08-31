@@ -1,5 +1,11 @@
-{ pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+# caps2esc only matters for a physically attached keyboard.
+lib.mkIf (!config.gl4dos.headless.enable) {
   services.interception-tools = {
     enable = true;
     plugins = [ pkgs.interception-tools-plugins.caps2esc ];

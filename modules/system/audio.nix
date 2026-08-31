@@ -1,6 +1,6 @@
-{ ... }:
+{ config, lib, ... }:
 #audio conf
-{
+lib.mkIf (!config.gl4dos.headless.enable) {
   services.pipewire = {
     enable = true;
     pulse.enable = true;

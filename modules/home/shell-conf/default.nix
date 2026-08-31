@@ -1,13 +1,19 @@
 # modules/home/shell-conf/default.nix
 
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./config-files.nix
     ./fish.nix
-    ./ghostty.nix
     ./starship.nix
     ./starship-symbols.nix
-  ];
+  ]
+  ++ lib.optionals (!osConfig.gl4dos.headless.enable) [ ./ghostty.nix ];
 }

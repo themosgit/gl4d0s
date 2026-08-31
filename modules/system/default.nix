@@ -1,8 +1,15 @@
 # modules/system/default.nix
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
+    ./headless.nix
     ./networking.nix
     ./services.nix
     ./users.nix
@@ -11,9 +18,15 @@
     ./packages.nix
     ./remap.nix
     ./fuzzflakes-build
- #   ./swap.nix
+    #   ./swap.nix
   ];
 
+  # >>> the switch <<<
+  # true  = server: no display server, no audio, no desktop/gaming packages
+  # false = workstation: Hyprland, greetd, PipeWire, Steam, GUI apps
+  gl4dos.headless.enable = true;
+
+  # Kept in both modes: ROCm needs the amdgpu driver and /run/opengl-driver.
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -21,7 +34,8 @@
     ];
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  # Only meaningful with an X server running.
+  services.xserver.videoDrivers = lib.optionals (!config.gl4dos.headless.enable) [ "amdgpu" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   system.stateVersion = "25.11";

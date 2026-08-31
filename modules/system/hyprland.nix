@@ -1,7 +1,13 @@
 #modules/system/hyprland.nix
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+lib.mkIf (!config.gl4dos.headless.enable) {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;

@@ -1,36 +1,52 @@
 # modules/home/packages.nix
 
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
+
+let
+  desktop = !osConfig.gl4dos.headless.enable;
+in
 
 {
   #user environment packages
-  home.packages = with pkgs; [
-    hyperfine # benchmark tool
-    mosh # ssh wrapper
-    wireplumber
-    nixfmt-rfc-style
-    gh
-    fastfetch
-    btop
-    nmap
-    neovim
-    firefox
-    ghostty
-    thunderbird
-    vesktop
-    keepassxc
-    shotman
-    brightnessctl
-    python314
-    zathura
-    hyprshot
-    tmux
-    socat
-    netcat-gnu
-    presenterm
-    claude-code
-    pi-coding-agent
-  ];
+  home.packages =
+    (with pkgs; [
+      hyperfine # benchmark tool
+      mosh # ssh wrapper
+      nixfmt-rfc-style
+      gh
+      fastfetch
+      btop
+      nmap
+      neovim
+      python314
+      tmux
+      socat
+      netcat-gnu
+      presenterm
+      claude-code
+      pi-coding-agent
+    ])
+    ++ lib.optionals desktop (
+      with pkgs;
+      [
+        wireplumber
+        firefox
+        ghostty
+        thunderbird
+        vesktop
+        keepassxc
+        shotman
+        brightnessctl
+        zathura
+        hyprshot
+      ]
+    );
 
   programs.bat.enable = true;
   programs.bat.config.style = "plain";

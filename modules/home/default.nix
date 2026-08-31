@@ -1,14 +1,22 @@
 # modules/home/default.nix
 
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 
 {
+  # osConfig is the NixOS config, handed to us by home-manager's NixOS module,
+  # so the desktop half of the home config follows the same switch.
   imports = [
-    ./hyprland
     ./shell-conf
     ./home-packages.nix
     ./git.nix
-  ];
+  ]
+  ++ lib.optionals (!osConfig.gl4dos.headless.enable) [ ./hyprland ];
 
   home = {
     username = "themos";
